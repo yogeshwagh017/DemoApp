@@ -2,10 +2,13 @@ pool:
   vmImage: 'macOS 10.13'
 
 variables:
--template:string
-    scheme:'DemoApp'
-    sdk:'iphoneos'
-    configuration:'Release'
+ -group:DemoApp
+  -name:scheme
+  value:'DemoApp'
+  -name:sdk
+  value:'iphoneos'
+  -name:configuration
+  value:'Release'
     
 -task:InstallAppleCertificate@2
 inputs:
