@@ -18,7 +18,7 @@ inputs:
 inputs:
     provisioningProfileLocation:'secureFiles'
     provProfileSecureFile:'$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-    removeProfile:'true'
+    removeProfile:true
 
 - task: Xcode@5
   displayName: 'Build the app using Xcode'
