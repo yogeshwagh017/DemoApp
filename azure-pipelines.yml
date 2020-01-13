@@ -7,7 +7,6 @@ variables:
     sdk:'iphoneos'
     configuration:'Release'
     
-steps:
 -task:InstallAppleCertificate@2
 inputs:
     certSecureFile:'$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
