@@ -29,6 +29,7 @@
 		CE5EA4C723CC6F0F007BEBA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5EA4C923CC6F0F007BEBA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5EA4CA23CC6F0F007BEBA4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE5EA4D223CC76A4007BEBA4 /* azure-pipelines.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "azure-pipelines.yml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +46,7 @@
 		CE5EA4AC23CC6E9B007BEBA4 = {
 			isa = PBXGroup;
 			children = (
+				CE5EA4D223CC76A4007BEBA4 /* azure-pipelines.yml */,
 				CE5EA4B723CC6E9C007BEBA4 /* DemoApp */,
 				CE5EA4B623CC6E9C007BEBA4 /* Products */,
 			);
