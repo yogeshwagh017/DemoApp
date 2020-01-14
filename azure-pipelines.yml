@@ -36,7 +36,7 @@ steps:
     actions: 'build'
     configuration: 'Release'
     sdk: 'iphoneos'
-    xcWorkspacePath: '**/*.xcodeproj/project.xcodeproj'
+    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     scheme: 'DemoApp'
     packageApp: false
     #scheme: 'DemoApp'
