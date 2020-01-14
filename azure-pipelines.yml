@@ -1,10 +1,6 @@
 pool:
   vmImage: 'macOS 10.13'
 
-variables:
-    scheme:'DemoApp'
-    sdk:'iphoneos'
-    configuration:'Release'
     
 steps:
 - task: InstallAppleCertificate@2
@@ -23,9 +19,9 @@ steps:
   displayName: 'Build the app using Xcode'
   inputs:
     actions: 'build'#'clean build analyze archive'
-    sdk: '$(sdk)'
-    scheme: '$(scheme)'
-    configuration: '$(configuration)'
+    sdk: 'iphoneos'
+    scheme: 'DemoApp'
+    configuration: 'Release'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     xcodeVersion: 'default'
     packageApp: true
