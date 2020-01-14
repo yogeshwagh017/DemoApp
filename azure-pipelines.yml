@@ -25,7 +25,7 @@ pool:
 #    deletecert:true
 steps:
     - task: Xcode@5
-    parameters:
+    inputs:
     action: 'build'
     scheme: 'DemoApp'
     sdk: 'iphoneos'
