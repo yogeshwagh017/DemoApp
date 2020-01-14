@@ -1,74 +1,49 @@
 pool:
-  vmImage: 'macos-latest'
+  vmImage: 'macOS 10.13'
 
-#variables:
-# -group:DemoApp
-#-name:scheme
-#  value:'DemoApp'
-#-name:SDK
-#  value:'iphoneos'
-#-name:Configuration
-#  value:'Release'
-
-
-
-#-task:InstallAppleProvisionProfile@1
-#inputs:
-#    provisioningProfileLocation:'secureFiles'
-#    provProfileSecureFile:'$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-#    removeProfile:true
-
-#-task:InstallAppleCertificate@2
-#displayName:Install Certificate
-#inputs:
-#    certSecureFile:'$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-#    certPwd:'$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-#    keychain:'temp'
-#    deletecert:true
+variables:
+    scheme:'DemoApp'
+    sdk:'iphoneos'
+    configuration:'Release'
+    
 steps:
-  
+- task: InstallAppleCertificate@2
+ inputs:
+    certSecureFile: '$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
+    certPwd: '$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
+    keychain: 'temp'
 
+- task: InstallAppleProvisionProfile@1
+ inputs:
+    provisioningProfileLocation:'secureFiles'
+    provProfileSecureFile:'$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
+    removeProfile:true
 
-
-   # actions: 'build'
 - task: Xcode@5
+  displayName: 'Build the app using Xcode'
   inputs:
-    actions: 'build'
-    configuration: 'Release'
-    sdk: 'iphoneos'
+    actions: 'build'#'clean build analyze archive'
+    sdk: '$(sdk)'
+    scheme: '$(scheme)'
+    configuration: '$(configuration)'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
-    scheme: 'DemoApp'
+    xcodeVersion: 'default'
     packageApp: true
-    #scheme: 'DemoApp'
-   # sdk: 'iphoneos'
-   # configuration: 'Release'
-   # xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'  
-   # xcodeVersion: 'default'  
-
-  #displayName: 'Build the app using Xcode'
-  #inputs:
-  #  actions: 'build'#'clean build analyze archive'
-  #  sdk: '$(sdk)'
-  #  scheme: '$(scheme)'
-  #  configuration: '$(configuration)'
-  #  xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
-  #  xcodeVersion:'default'
-  #  packageApp:true
-  #  signingOption:'manual'
-  #  signingIdentity:'$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
-  #  provisioningProfileUuid:'$(APPLE_PROV_PROFILE_UUID)'
-  #  exportPath:'$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
-  #  useXcpretty: 'false'
+    signingOption: 'manual'
+    signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
+    provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
+    exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
+    useXcpretty: 'false'
     #args: '-archivePath $(agent.buildDirectory)/DemoApp'
     
-#-task:CopyFiles@2
-#inputs:
-#    contents:'**/*.ipa'
-#    targetFolder:'$(build.artifactStagingDirectory)'
-#    overWrite:true
-#
-#- task: PublishBuildArtifacts@1
-#  inputs:
-#    pathToPublish: '$(build.artifactStagingDirectory)/output/$(sdk)/$(configuration)'
-#    artifactName: 'drop'
-#    artifactType: 'Container'
+- task: CopyFiles@2
+inputs:
+    contents: '**/*.ipa'
+    targetFolder: '$(build.artifactStagingDirectory)'
+    overWrite: true
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(build.artifactStagingDirectory)/output/$(sdk)/$(configuration)'
+    artifactName: 'drop'
+    artifactType: 'Container'
