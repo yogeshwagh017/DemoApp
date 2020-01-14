@@ -25,30 +25,38 @@ pool:
 #    deletecert:true
 steps:
     - task: Xcode@5
-  displayName: 'Build the app using Xcode'
-  inputs:
-    actions: 'build'#'clean build analyze archive'
-    sdk: '$(sdk)'
-    scheme: '$(scheme)'
-    configuration: '$(configuration)'
-    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
-    xcodeVersion:'default'
-    packageApp:true
-    signingOption:'manual'
-    signingIdentity:'$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
-    provisioningProfileUuid:'$(APPLE_PROV_PROFILE_UUID)'
-    exportPath:'$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
-    useXcpretty: 'false'
+    parameters:
+    action:'build'
+    scheme:'DemoApp'
+    sdk:'iphoneos'
+    configuration:'Release'
+    xcWorkspacePath:'**/*.xcodeproj/project.xcworkspace'  
+    xcodeVersion:'default'  
+
+  #displayName: 'Build the app using Xcode'
+  #inputs:
+  #  actions: 'build'#'clean build analyze archive'
+  #  sdk: '$(sdk)'
+  #  scheme: '$(scheme)'
+  #  configuration: '$(configuration)'
+  #  xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
+  #  xcodeVersion:'default'
+  #  packageApp:true
+  #  signingOption:'manual'
+  #  signingIdentity:'$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
+  #  provisioningProfileUuid:'$(APPLE_PROV_PROFILE_UUID)'
+  #  exportPath:'$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
+  #  useXcpretty: 'false'
     #args: '-archivePath $(agent.buildDirectory)/DemoApp'
     
--task:CopyFiles@2
-inputs:
-    contents:'**/*.ipa'
-    targetFolder:'$(build.artifactStagingDirectory)'
-    overWrite:true
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(build.artifactStagingDirectory)/output/$(sdk)/$(configuration)'
-    artifactName: 'drop'
-    artifactType: 'Container'
+#-task:CopyFiles@2
+#inputs:
+#    contents:'**/*.ipa'
+#    targetFolder:'$(build.artifactStagingDirectory)'
+#    overWrite:true
+#
+#- task: PublishBuildArtifacts@1
+#  inputs:
+#    pathToPublish: '$(build.artifactStagingDirectory)/output/$(sdk)/$(configuration)'
+#    artifactName: 'drop'
+#    artifactType: 'Container'
