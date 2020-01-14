@@ -19,8 +19,9 @@ steps:
     scheme: 'DemoApp'
     packageApp: true
     exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
-    signingOption: 'auto'
-    teamId: '299VAT3WU6'
+    signingOption: 'manual'
+    signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
+    provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
     useXcpretty: false
     #args: '-archivePath $(agent.buildDirectory)/DemoApp'
     
