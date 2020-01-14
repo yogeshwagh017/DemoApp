@@ -9,7 +9,7 @@ variables:
   value:'iphoneos'
   -name:configuration
   value:'Release'
-steps:
+
 -task:InstallAppleProvisionProfile@1
 inputs:
     provisioningProfileLocation:'secureFiles'
@@ -23,8 +23,6 @@ inputs:
     certPwd:'$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
     keychain:'temp'
     deletecert:true
-
-
 
 - task: Xcode@5
   displayName: 'Build the app using Xcode'
@@ -48,7 +46,7 @@ inputs:
     contents:'**/*.ipa'
     targetFolder:'$(build.artifactStagingDirectory)'
     overWrite:true
-    
+
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: '$(build.artifactStagingDirectory)/output/$(sdk)/$(configuration)'
