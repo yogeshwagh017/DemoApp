@@ -11,6 +11,7 @@ variables:
   value:'Release'
     
 -task:InstallAppleCertificate@2
+displayName:Install Certificate
 inputs:
     certSecureFile:'$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
     certPwd:'$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
