@@ -24,14 +24,21 @@ pool:
 #    keychain:'temp'
 #    deletecert:true
 steps:
-    - task: Xcode@5
-    inputs:
+  
+- task: Xcode@5
+  inputs:
     actions: 'build'
-    scheme: 'DemoApp'
-    sdk: 'iphoneos'
-    configuration: 'Release'
-    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'  
-    xcodeVersion: 'default'  
+    packageApp: false
+      
+
+
+
+   # actions: 'build'
+    #scheme: 'DemoApp'
+   # sdk: 'iphoneos'
+   # configuration: 'Release'
+   # xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'  
+   # xcodeVersion: 'default'  
 
   #displayName: 'Build the app using Xcode'
   #inputs:
