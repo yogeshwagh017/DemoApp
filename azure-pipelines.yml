@@ -9,13 +9,13 @@ variables:
   value:'iphoneos'
   -name:configuration
   value:'Release'
-
+steps:
 -task:InstallAppleProvisionProfile@1
 inputs:
     provisioningProfileLocation:'secureFiles'
     provProfileSecureFile:'$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
     removeProfile:true
-    
+
 -task:InstallAppleCertificate@2
 displayName:Install Certificate
 inputs:
