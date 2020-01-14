@@ -3,22 +3,12 @@ pool:
 
     
 steps:
+
 - task: InstallAppleCertificate@2
   inputs:
-    certSecureFile: '$(P12FileName)'
-    certPwd: '$(P12Password)'
+    certSecureFile: '$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
+    certPwd: '$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
     keychain: 'temp'
-#- task: InstallAppleCertificate@2
-# inputs:
-#    certSecureFile: '$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-#    certPwd: '$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-#    keychain: 'temp'
-
-- task: InstallAppleProvisionProfile@1
-  inputs:
-    provisioningProfileLocation:'secureFiles'
-    provProfileSecureFile:'$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-    removeProfile:true
 
 - task: Xcode@5
   displayName: 'Build the app using Xcode'
@@ -34,11 +24,11 @@ steps:
     signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
     exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
-    useXcpretty: 'false'
+    useXcpretty: false
     #args: '-archivePath $(agent.buildDirectory)/DemoApp'
     
 - task: CopyFiles@2
-inputs:
+  inputs:
     contents: '**/*.ipa'
     targetFolder: '$(build.artifactStagingDirectory)'
     overWrite: true
