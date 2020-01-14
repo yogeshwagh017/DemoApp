@@ -25,7 +25,6 @@ steps:
     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
     exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
     useXcpretty: false
-    provisioningProfileName: 'PwC Internal Apps Dev Profile'
     #args: '-archivePath $(agent.buildDirectory)/DemoApp'
     
 - task: CopyFiles@2
