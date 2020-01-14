@@ -26,7 +26,7 @@ pool:
 steps:
     - task: Xcode@5
     inputs:
-    action: 'build'
+    actions: 'build'
     scheme: 'DemoApp'
     sdk: 'iphoneos'
     configuration: 'Release'
