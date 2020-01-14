@@ -15,7 +15,7 @@ steps:
 #    keychain: 'temp'
 
 - task: InstallAppleProvisionProfile@1
- inputs:
+  inputs:
     provisioningProfileLocation:'secureFiles'
     provProfileSecureFile:'$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
     removeProfile:true
