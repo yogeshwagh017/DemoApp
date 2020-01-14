@@ -1,19 +1,17 @@
 pool:
   vmImage: 'macos-latest'
 
-    
 steps:
-
 - task: InstallAppleCertificate@2
   inputs:
-    certSecureFile: '$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-    certPwd: '$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
+    certSecureFile: '$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines 'Variables'.
+    certPwd: '$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines 'Variables'. and marked 'secret' to be encrypted
     keychain: 'temp'
 
 - task: InstallAppleProvisioningProfile@1
   inputs:
     provisioningProfileLocation: 'secureFiles'
-    provProfileSecureFile: '$(provProfileSecureFileName)'
+    provProfileSecureFile: '$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in azure pipelines 'Variables'
 
 - task: Xcode@5
   displayName: 'Build the app using Xcode'
@@ -27,7 +25,6 @@ steps:
     signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
     useXcpretty: false
-    #args: '-archivePath $(agent.buildDirectory)/DemoApp'
     
 - task: CopyFiles@2
   inputs:
@@ -40,3 +37,5 @@ steps:
     pathToPublish: '$(build.artifactStagingDirectory)'
     artifactName: 'drop'
     artifactType: 'Container'
+
+
