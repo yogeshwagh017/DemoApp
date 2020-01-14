@@ -31,12 +31,12 @@ steps:
     
 - task: CopyFiles@2
   inputs:
-    contents: '**/*.ipa'
+    contents: '**/**'
     targetFolder: '$(build.artifactStagingDirectory)'
     overWrite: true
     
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: '$(build.artifactStagingDirectory)/output/iphoneos/Release'
+    pathToPublish: '$(build.artifactStagingDirectory)'
     artifactName: 'drop'
     artifactType: 'Container'
