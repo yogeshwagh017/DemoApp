@@ -1,30 +1,30 @@
 pool:
   vmImage: 'macOS 10.13'
 
-variables:
- -group:DemoApp
-  -name:scheme
-  value:'DemoApp'
-  -name:sdk
-  value:'iphoneos'
-  -name:configuration
-  value:'Release'
+#variables:
+ #-group:DemoApp
+ # -name:scheme
+ # value:'DemoApp'
+ # -name:sdk
+ # value:'iphoneos'
+ # -name:configuration
+ # value:'Release'
 
--task:InstallAppleProvisionProfile@1
-inputs:
-    provisioningProfileLocation:'secureFiles'
-    provProfileSecureFile:'$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-    removeProfile:true
+#-task:InstallAppleProvisionProfile@1
+#inputs:
+#    provisioningProfileLocation:'secureFiles'
+#    provProfileSecureFile:'$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
+#    removeProfile:true
 
--task:InstallAppleCertificate@2
-displayName:Install Certificate
-inputs:
-    certSecureFile:'$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-    certPwd:'$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
-    keychain:'temp'
-    deletecert:true
-
-- task: Xcode@5
+#-task:InstallAppleCertificate@2
+#displayName:Install Certificate
+#inputs:
+#    certSecureFile:'$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
+#    certPwd:'$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines pipeline editor and marked 'secret' to be encrypted
+#    keychain:'temp'
+#    deletecert:true
+steps:
+    - task: Xcode@5
   displayName: 'Build the app using Xcode'
   inputs:
     actions: 'build'#'clean build analyze archive'
