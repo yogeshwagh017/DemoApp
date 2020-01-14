@@ -1,5 +1,8 @@
+trigger:
+-master
+
 pool:
-  vmImage: 'macOS 10.13'
+  vmImage: 'macos-latest'
 
 #variables:
  #-group:DemoApp
@@ -26,7 +29,7 @@ pool:
 steps:
     - task: Xcode@5
     inputs:
-    -actions: 'build'
+    actions: 'build'
     scheme: 'DemoApp'
     sdk: 'iphoneos'
     configuration: 'Release'
