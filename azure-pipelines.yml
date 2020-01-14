@@ -23,7 +23,7 @@ steps:
     sdk: 'iphoneos'
     scheme: 'DemoApp'
     packageApp: true
-    exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
+    exportPath: '$(agent.buildDirectory)/output/iphoneos/Release'
     signingOption: 'manual'
     signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
