@@ -13,17 +13,14 @@ steps:
 - task: Xcode@5
   displayName: 'Build the app using Xcode'
   inputs:
-    actions: 'build'#'clean build analyze archive'
+    actions: 'build'
+    configuration: 'Release'
     sdk: 'iphoneos'
     scheme: 'DemoApp'
-    configuration: 'Release'
-    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
-    xcodeVersion: 'default'
     packageApp: true
-    signingOption: 'manual'
-    signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
-    provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
     exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
+    signingOption: 'auto'
+    teamId: '299VAT3WU6'
     useXcpretty: false
     #args: '-archivePath $(agent.buildDirectory)/DemoApp'
     
