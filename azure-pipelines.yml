@@ -1,14 +1,22 @@
 pool:
   vmImage: 'macos-latest'
 
-#variables:
- #-group:DemoApp
- # -name:scheme
- # value:'DemoApp'
- # -name:sdk
- # value:'iphoneos'
- # -name:configuration
- # value:'Release'
+variables:
+ -group:DemoApp
+-name:scheme
+  value:'DemoApp'
+-name:SDK
+  value:'iphoneos'
+-name:Configuration
+  value:'Release'
+  
+steps:
+- task: Xcode@5
+  inputs:
+    actions: 'build'
+    xcWorkspacePath: '**/*.xcodeproj/project.xcodeproj'
+    scheme: 'DemoApp'
+    packageApp: false
 
 #-task:InstallAppleProvisionProfile@1
 #inputs:
