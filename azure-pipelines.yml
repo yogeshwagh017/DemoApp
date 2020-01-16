@@ -1,4 +1,3 @@
-
 trigger:
  - demo
  - releases/*
@@ -6,24 +5,17 @@ trigger:
 pool:
   vmImage: 'macos-latest'
 
-variables:
- p12FileName : '$(P12FileName)'
- p12FilePassword: '$(P12Password)'
- profileName : '$(provProfileSecureFileName)'
- scheme: 'DemoApp'
-
-
 steps:
 - task: InstallAppleCertificate@2
   inputs:
-    certSecureFile: '$(p12FileName)'# The 'P12FileName' variable is set in the Azure pipelines 'Variables'.
-    certPwd: '$(p12FilePassword)' # The 'P12Password' variable is set in the Azure pipelines 'Variables'. and marked 'secret' to be encrypted
+    certSecureFile: '$(P12FileName)'# The 'P12FileName' variable is set in the Azure pipelines 'Variables'.
+    certPwd: '$(P12Password)' # The 'P12Password' variable is set in the Azure pipelines 'Variables'. and marked 'secret' to be encrypted
     keychain: 'temp'
 
 - task: InstallAppleProvisioningProfile@1
   inputs:
     provisioningProfileLocation: 'secureFiles'
-    provProfileSecureFile: '$(profileName)'# The 'provProfileSecureFileName' variable is set in azure pipelines 'Variables'
+    provProfileSecureFile: '$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in azure pipelines 'Variables'
 
 - task: Xcode@5
   displayName: 'Build the app using Xcode'
@@ -49,5 +41,3 @@ steps:
     pathToPublish: '$(build.artifactStagingDirectory)'
     artifactName: 'drop'
     artifactType: 'Container'
-
-
