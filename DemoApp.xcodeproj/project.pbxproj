@@ -299,7 +299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Varghese Abraham (8Q7VPKEKP2)";
+				CODE_SIGN_IDENTITY = "Apple Development: kushal.choudhari@infosys.com (X7JWY6F38R)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 299VAT3WU6;
 				INFOPLIST_FILE = DemoApp/Info.plist;
@@ -309,7 +309,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pwc.us.mobility.stg-pcdassessment";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "PwC Internal Apps Dev Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -318,7 +318,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Varghese Abraham (8Q7VPKEKP2)";
+				CODE_SIGN_IDENTITY = "Apple Development: kushal.choudhari@infosys.com (X7JWY6F38R)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 299VAT3WU6;
 				INFOPLIST_FILE = DemoApp/Info.plist;
@@ -328,7 +328,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pwc.us.mobility.stg-pcdassessment";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "PwC Internal Apps Dev Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
