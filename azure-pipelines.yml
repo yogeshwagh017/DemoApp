@@ -50,3 +50,4 @@ steps:
     releaseNotesOption: 'input'
     releaseNotesInput: 'test'
     destinationType: 'groups'
+    distributionGroupId: 'Collaborators'
