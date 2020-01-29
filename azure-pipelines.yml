@@ -45,7 +45,7 @@ steps:
 - task: AppCenterDistribute@3
   inputs:
     serverEndpoint: 'AZURE_APPCENTER'
-    appSlug: 'https://appcenter.ms/users/yogeshwagh0017-gmail.com/apps/DemoApp'
+    appSlug: 'https://appcenter.ms/users/yogeshwagh0017-gmail.com/apps/DemoApp-1'
     appFile: '$(build.artifactStagingDirectory)/output/$(SDK)/$(Configuration)'
     releaseNotesOption: 'input'
     releaseNotesInput: 'test'
