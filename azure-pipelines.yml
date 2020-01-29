@@ -46,7 +46,7 @@ steps:
   inputs:
     serverEndpoint: 'AZURE_APPCENTER'
     appSlug: 'yogeshwagh0017-gmail.com/DemoApp-1'
-    appFile: '$(build.artifactStagingDirectory)/output/$(SDK)/$(Configuration)'
+    appFile: '$(build.artifactStagingDirectory)/output/$(SDK)/$(Configuration)/DemoApp.ipa'
     releaseNotesOption: 'input'
     releaseNotesInput: 'test'
     destinationType: 'groups'
