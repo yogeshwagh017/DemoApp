@@ -38,15 +38,15 @@ steps:
     
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: '$(build.artifactStagingDirectory)'
+    pathToPublish: '$(build.artifactStagingDirectory)/output/$(SDK)/$(Configuration)'
     artifactName: 'drop'
     artifactType: 'Container'
 
-- task: AppCenterDistribute@3
-  inputs:
-    serverEndpoint: 'AZURE_APPCENTER'
-    appSlug: 'https://appcenter.ms/users/yogeshwagh0017-gmail.com/apps/DemoApp'
-    appFile: '$(build.artifactStagingDirectory)'
-    releaseNotesOption: 'input'
-    releaseNotesInput: 'test'
-    destinationType: 'groups'
+#- task: AppCenterDistribute@3
+#  inputs:
+#    serverEndpoint: 'AZURE_APPCENTER'
+#    appSlug: 'https://appcenter.ms/users/yogeshwagh0017-gmail.com/apps/DemoApp'
+#    appFile: '$(build.artifactStagingDirectory)'
+#    releaseNotesOption: 'input'
+#    releaseNotesInput: 'test'
+#    destinationType: 'groups'
